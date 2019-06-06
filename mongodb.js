@@ -12,32 +12,20 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
   const db = client.db(databaseName)
 
-  // db.collection('users').findOne({ _id: new ObjectID("5cee6370c80a6a559512655a")}, (error, user) => {
-  //   if (error) {
-  //     return console.log('Unable to fetch')
-  //   }
-
-  //   console.log(user)
+  // db.collection('users').deleteMany({
+  //   age: 30
+  // }).then((result) => {
+  //   console.log(result)
+  // }).catch((error) => {
+  //   console.log(error)
   // })
 
-  // db.collection('users').find({ age: 30 }).toArray((error, users) => {
-  //   console.log(users)
-  // })
-
-  db.collection('tasks').findOne({ _id: new ObjectID("5cee64a9a0c4b756a6ccd06a")}, (error, document) => {
-    if (error) {
-      return console.log('Cannot find document!')
-    }
-
-    console.log(document)
-  })
-
-  db.collection('tasks').find({ completed: false}).toArray((error, documents) => {
-    if (error) {
-      return console.log('Cannot find documents')
-    }
-
-    console.log(documents)
+  db.collection('tasks').deleteOne({
+    description: 'Learn MongoDB'
+  }).then((result) => {
+    console.log(result)
+  }).catch((error) => {
+    console.log(error)
   })
 
 })
