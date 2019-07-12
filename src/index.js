@@ -14,11 +14,9 @@ const port = process.env.PORT || 3000
 //   }
 // })
 
-app.use((req, res, next) => {
-  if (req.method) {
-    res.status(503).send('Site is under maintenance')
-  }
-})
+// app.use((req, res, next) => {
+//   res.status(503).send('Site is under maintenance')
+// })
 
 app.use(express.json())
 app.use(userRouter)
@@ -30,8 +28,8 @@ app.listen(port, () => {
 
 const jwt = require('jsonwebtoken')
 
-const myFunction = async ()  => {
-  const token = jwt.sign({ _id: 'abc123'}, 'thisismynewcource', { expiresIn: '7 days'})
+const myFunction = async () => {
+  const token = jwt.sign({ _id: 'abc123' }, 'thisismynewcource', { expiresIn: '7 days' })
   console.log(token)
 
   const data = jwt.verify(token, 'thisismynewcource')
